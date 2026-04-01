@@ -99,12 +99,11 @@ try{ReloadDetail();}catch(err){console.log(err)}
 
 function OnBack(){
 Show('Back',0);
-Show("SC",0)
 const Choice=CHOICE
 CHOICE-=1
 console.log(Choice,"->",CHOICE)
 if(CHOICE!=1){Show('Back',1);Show('OC',0);Show('DetailTable',0);Show('Chart2Div',1);document.getElementById('ODD').value=0;}
-else{document.getElementById('SDD').value=0;ReplaceData2(C2SetupObject)}
+else{document.getElementById('SDD').value=0;Show("SC",0);ReplaceData2(C2SetupObject)}
 }
 
 
@@ -122,7 +121,11 @@ function LoadC2(){
 	radius:'50%',
         animation: true,
         plugins: {
-		title:{display:true,text:"Registrations by Source"},
+		title:{display:true,text:"Registrations by Source",font: {
+                size: 26, // Set the font size here
+                family: 'Arial', // Optional: you can also set other font properties
+                weight: 'bold', // Optional: e.g., 'normal', 'bold', etc.
+            },},
           legend: {
             display: false
           },

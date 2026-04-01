@@ -86,7 +86,7 @@ const pieLabelsPlugin = {
         ctx.textAlign = isRight ? 'left' : 'right';
         ctx.fillStyle = '#000';
         const textX = isRight ? labelX + 15 : labelX - 15;
-        const labelText = `${data.labels[index]}: ${Math.floor(val / 1000)}K (${percentage}%)`;
+        const labelText = `${data.labels[index]}: ${val} (${percentage}%)`;
         ctx.fillText(labelText, textX, finalY);
 	ctx.fillText(labelText, textX, finalY);
 	ctx.fillText(labelText, textX, finalY);
@@ -122,7 +122,7 @@ const topLabelsPluginK = {
     chart.getDatasetMeta(0).data.forEach((bar, index) => {
       const value = dataset.data[index];
       const percent = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
-      const formattedValue = value >= 1000 ? `${Math.floor(value / 1000)}K` : value;
+      const formattedValue =value;
 
       // Draw Value (Top line, moved higher)
       ctx.font = 'bold 12px sans-serif';

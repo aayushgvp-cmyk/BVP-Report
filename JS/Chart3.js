@@ -60,7 +60,11 @@ function LoadC3(){
         animation: true,
 	scales:{y: {max: 1.2*(Math.max(...Object.values(C3SetupObject)))}},
         plugins: {
-		title:{display:true,text:"Cost/Lead by day for April"},
+		title:{display:true,text:"Cost/Lead by day for April",font: {
+                size: 26, // Set the font size here
+                family: 'Arial', // Optional: you can also set other font properties
+                weight: 'bold', // Optional: e.g., 'normal', 'bold', etc.
+            },},
           legend: {
             display: false
           },
