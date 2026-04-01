@@ -78,7 +78,6 @@ UPDATE2();}
 
 function OnLSwitch2(){
 SetVariables2()
-console.log(CHOICE)
 if(CHOICE===1){
 NEWDATA=rawData1.filter(r=>RunFilters2(r));
 FilterAndReload2(NEWDATA,'source');}
@@ -104,8 +103,8 @@ Show("SC",0)
 const Choice=CHOICE
 CHOICE-=1
 console.log(Choice,"->",CHOICE)
-if(CHOICE!=1){Show('Back',1);Show('OC',0);Show('DetailTable',0);Show('Chart2Div',1)}
-else{ReplaceData2(C2SetupObject)}
+if(CHOICE!=1){Show('Back',1);Show('OC',0);Show('DetailTable',0);Show('Chart2Div',1);document.getElementById('ODD').value=0;}
+else{document.getElementById('SDD').value=0;ReplaceData2(C2SetupObject)}
 }
 
 

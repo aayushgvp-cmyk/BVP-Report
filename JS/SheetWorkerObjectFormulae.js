@@ -18,7 +18,7 @@ case 'CPL':
 headers.forEach((H,i)=>COL2[H]=i);
 break;
 case 'Labels':
-headers.forEach((H,i)=>COL2[H]=i);
+headers.forEach((H,i)=>COL3[H]=i);
 break;
 }
 

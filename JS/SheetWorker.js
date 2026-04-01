@@ -2,10 +2,18 @@
 let C1Object={},C2SetupObject={},C3SetupObject={}
 let rawData1,rawData2,rawData3
 let SourceArray=[],OwnerArray=[],LocationArray=[]
+let LabelsHTMLString=""
 async function handleFileAsync() {
 
 console.time("Data imported and processed in")
 
+try{
+rawData3=await ImportData('Labels')
+
+rawData3.forEach(r=>LabelsHTMLString=LabelsHTMLString+`<strong style="text-align:center;position:relative;left:40%;width:60%;z-index:1;color:#4D15DE">${r[COL3['Label Name']]}: ${r[COL3["Label Value"]]}</strong><br>`)
+console.log(LabelsHTMLString)
+document.getElementById('LabelsDiv').innerHTML=LabelsHTMLString
+}catch(err){console.log(err)}
 
 
 //											  C1
@@ -81,9 +89,11 @@ OPTION.value=i+1;
 SELECT_TAG.appendChild(CLONE)
 })}
 
-console.log(MArray,C3SetupObject,COL2)
-
 }catch(err){console.log(err)}
+
+//LabelsHTMLString
+
+
 
 console.timeEnd("Data imported and processed in")
 

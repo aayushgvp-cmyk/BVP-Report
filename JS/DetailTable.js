@@ -12,20 +12,17 @@ plugins:[{
     id: 'limitInput',
     component: LimitInput,
     position: gridjs.PluginPosition.Footer,
-    order: 1 
-},{
-      id: 'summary',
-      component: SummaryPlugin,
-      position: gridjs.PluginPosition.Footer // Places it below the grid
-    }],
+    order: 0 
+}],
 sort: true,
+resizable:true,
+height: '85vh',
 style:{td: {border: '2px solid #000','word-break':'break-all'}},
 data:DTData
 }).render(document.getElementById('DetailTable'));
 }
 
 function ReloadDetail(){
-Show('OC',1)
 SetVariables2()
 
 DTData=[]
