@@ -3,8 +3,8 @@ let Chart3
 let MONTH
 
 function RunFilters3(r){
-const OUTPUT=SeekMonth(MONTH,r)
-return OUTPUT
+	const OUTPUT=SeekMonth(MONTH,r)
+	return OUTPUT
 }
 
 function UpdateChart3(){
@@ -38,54 +38,53 @@ ReplaceData3(NEWDATAOBJECT);}
 
 
 
-//								MONTH
+//                MONTH
 function OnSwitch3(){
-SetMonth()
-UpdateChart3();
+	SetMonth()
+	UpdateChart3();
 }
 
 
 
-//								CHART
+//                CHART
 
 
 
 
 function LoadC3(){
- Chart3=  new Chart(
-    document.getElementById('Chart3HTML'),
-    {
-      type: 'line',
-      options: {
-        animation: true,
-	scales:{y: {max: 1.2*(Math.max(...Object.values(C3SetupObject)))}},
-        plugins: {
-		title:{display:true,text:"Cost/Lead by day for April",font: {
-                size: 26, // Set the font size here
-                family: 'Arial', // Optional: you can also set other font properties
-                weight: 'bold', // Optional: e.g., 'normal', 'bold', etc.
-            },},
-          legend: {
-            display: false
-          },
-          tooltip: {
-            enabled: true
-          }
-        },
+	Chart3=  new Chart(
+		document.getElementById('Chart3HTML'),
+		{
+			type: 'line',
+			options: {
+				animation: true,
+				scales:{y: {max: 1.2*(Math.max(...Object.values(C3SetupObject)))}},
+				plugins: {
+					title:{display:true,text:"Cost/Lead by day for April",font: {
+					size: 26, // Set the font size here
+					family: 'Arial', // Optional: you can also set other font properties
+					weight: 'bold', // Optional: e.g., 'normal', 'bold', etc.
+				},
+			},
+			legend: {
+				display: false
+			},
+			tooltip: {
+				enabled: true
+			}
+			},
 
-      },
-	plugins:[topLabelsPluginK],
-      data: {
-        labels:Object.keys(C3SetupObject),
-        datasets: [
-          {
-            data: Object.values(C3SetupObject),
-		backgroundColor:colourRainArray
-          }
-        ]
-      },
-
-    }
-  );
-
+			},
+			plugins:[topLabelsPluginK],
+			data: {
+				labels:Object.keys(C3SetupObject),
+				datasets: [
+					{
+						data: Object.values(C3SetupObject),
+						backgroundColor:colourRainArray
+					}
+				]
+			},
+		}
+	);
 }

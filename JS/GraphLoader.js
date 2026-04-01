@@ -5,23 +5,23 @@ let max=0
 
 function handleChart() {
 
-console.log("chart start")
+	console.log("chart start")
 
 
-Show('Loading',0)
+	Show('Loading',0)
 
-LoadC1()
+	LoadC1()
 
-LoadC2()
+	LoadC2()
 
-Show('LC',1);
+	Show('LC',1);
 
-LoadC3()
+	LoadC3()
 
 
-ODD.addEventListener("change",OnOSwitch2)
-MDD.addEventListener("change",OnSwitch3)
-SDD.addEventListener("change",OnSSwitch2)
-LDD.addEventListener("change",OnLSwitch2)
-console.log("chart end")
+	ODD.addEventListener("change",OnOSwitch2)
+	MDD.addEventListener("change",OnSwitch3)
+	SDD.addEventListener("change",OnSSwitch2)
+	LDD.addEventListener("change",OnLSwitch2)
+	console.log("chart end")
 }
