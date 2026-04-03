@@ -58,7 +58,31 @@ async function handleFileAsync() {
 			OPTION0.textContent=v;
 			OPTION0.value=i+1;
 			SELECT_TAG0.appendChild(CLONE0)
-		})}
+		})
+	}
+
+	SeminarArray=[...new Set(rawData1.map(r=>r[COL1.Seminar]))].sort()
+	{
+		const SELECT_TAG=document.querySelector('#SEDD1');
+		const TEMPLATE=document.querySelector('#SE1Template');
+		SeminarArray.forEach((v,i)=>{const CLONE=TEMPLATE.content.cloneNode(true);
+			const OPTION=CLONE.querySelector('.SE1OptionClass');
+			OPTION.textContent=v;
+			OPTION.value=i+1;
+			SELECT_TAG.appendChild(CLONE)
+		})
+	}
+
+	{
+		const SELECT_TAG=document.querySelector('#SEDD2');
+		const TEMPLATE=document.querySelector('#SE2Template');
+		SeminarArray.forEach((v,i)=>{const CLONE=TEMPLATE.content.cloneNode(true);
+			const OPTION=CLONE.querySelector('.SE2OptionClass');
+			OPTION.textContent=v;
+			OPTION.value=i+1;
+			SELECT_TAG.appendChild(CLONE)
+		})
+	}
 
 
 

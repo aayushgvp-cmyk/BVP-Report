@@ -1,6 +1,6 @@
 let Chart2
 
-let SOURCE,OWNER,LOCATION
+let SOURCE,OWNER,LOCATION,SEMINAR2,FROM2
 
 function RunFilters2(r){
 	const OUTPUT=SeekLocation(LOCATION,r)&&SeekSource(SOURCE,r)&&SeekOwner(OWNER,r);
@@ -26,6 +26,10 @@ function SetVariables2(){
 	SOURCE=(Number(Or(document.getElementById('SDD').value,0))===0?"All":SourceArray[Or(document.getElementById('SDD').value,0)-1]);
 	OWNER=(Number(Or(document.getElementById('ODD').value,0))===0?"All":OwnerArray[Or(document.getElementById('ODD').value,0)-1]);
 	LOCATION=(Number(Or(document.getElementById('LDD').value,0))===0?"All":LocationArray[Number(document.getElementById('LDD').value)-1]);
+	SEMINAR2=(Number(Or(document.getElementById('SEDD1').value,0))===0?"All":SeminarArray[Or(document.getElementById('SEDD1').value,0)-1]);
+	FROM2=(Number(Or(document.getElementById('WDD2').value,0))===0?"All":Or(document.getElementById('WDD2').value,0));
+
+
 }
 
 function FilterAndReload2(newdata,Variable){

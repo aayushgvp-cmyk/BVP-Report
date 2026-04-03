@@ -18,6 +18,13 @@
 
 <div id="LC" style="position:absolute;right:5%;top:580px;z-index:2"><label for="LDD">Location: </label><select id="LDD"><option value=0>All</option></select><template id="LTemplate"><option class="LOptionClass"></option></template></div>
 
+<div id="WC1" style="position:absolute;right:5%;top:180px;z-index:2"><label for="WDD1">From: </label><select id="WDD1"><option value=0>All</option><option value=1>Today</option><option value=2>Yesterday</option><option value=3>This Week</option><option value=4>Last Week</option><option value=5>Last 7 Days</option><option value=6>Last 30 Days</option><option value=7>This Month</option><option value=8>Last Month</option></select></div>
+
+<div id="WC2" style="position:absolute;right:5%;top:560px;z-index:2"><label for="WDD2">From: </label><select id="WDD2"><option value=0>All</option><option value=1>Today</option><option value=2>Yesterday</option><option value=3>This Week</option><option value=4>Last Week</option><option value=5>Last 7 Days</option><option value=6>Last 30 Days</option><option value=7>This Month</option><option value=8>Last Month</option></select></div>
+
+<div id="SEC1" style="position:absolute;right:5%;top:200px;z-index:2"><label for="SEDD1">Seminar: </label><select id="SEDD1"><option value=0>All</option></select><template id="SE1Template"><option class="SE1OptionClass"></option></template></div>
+
+<div id="SEC2" style="position:absolute;right:5%;top:600px;z-index:2"><label for="SEDD2">Seminar: </label><select id="SEDD2"><option value=0>All</option></select><template id="SE2Template"><option class="SE2OptionClass"></option></template></div>
 
 <div class="chartClass" id="Chart1Div"><canvas id="Chart1HTML"></canvas></div>
 <hr>
@@ -35,7 +42,7 @@ style="color:#FFFFFF">... </p> </div>
 </body>
 <script src="JS/Math.js"></script>
 <script src="JS/Work.js"></script>
-<script>Show('DetailTable',0);Show('Back',0);Show('OC',0);Show('SC',0);Show('LC',0);Show('MC',0);</script>
+<script>Show('DetailTable',0);Show('Back',0);Show('OC',0);Show('SC',0);Show('LC',0);Show('WC1',0);Show('WC2',0);Show('SEC1',0);Show('SEC2',0);Show('MC',0);</script>
 <script src="JS/chart.umd.min.js"></script>
 <script src="JS/xlsx.full.min.js"></script>
 <script src="JS/Grid.js"></script>

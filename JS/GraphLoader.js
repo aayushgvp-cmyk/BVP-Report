@@ -12,9 +12,14 @@ function handleChart() {
 
 	LoadC1()
 
+	Show('WC1',1);
+	Show('SEC1',1);
+
 	LoadC2()
 
 	Show('LC',1);
+	Show('WC2',1);
+	Show('SEC2',1);
 
 	LoadC3()
 

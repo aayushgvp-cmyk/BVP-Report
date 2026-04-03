@@ -3,7 +3,7 @@ let DTGrid;
 
 function MakeDT(){
   DTGrid=new gridjs.Grid({
-    columns:HEADERS1.filter(c=>c!='Type'&&c!='stage'),
+    columns:HEADERS1.filter(c=>c!='Type'&&c!='stage'&&c!-'Date'&&c!='Seminar'),
     search: true,
     autoWidth:true,
     fixedHeader: true,

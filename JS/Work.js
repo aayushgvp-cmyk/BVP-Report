@@ -13,3 +13,4 @@ function Show(a,b){
 function log(...a){
 	console.log(...a)
 }
+

@@ -41,6 +41,7 @@ ReplaceData3(NEWDATAOBJECT);}
 //                MONTH
 function OnSwitch3(){
 	SetMonth()
+	NewTitle3(`Cost/Lead by day for ${MONTH}`)
 	UpdateChart3();
 }
 
@@ -60,7 +61,7 @@ function LoadC3(){
 				animation: true,
 				scales:{y: {max: 1.2*(Math.max(...Object.values(C3SetupObject)))}},
 				plugins: {
-					title:{display:true,text:"Cost/Lead by day for April",font: {
+					title:{display:true,text:"Cost/Lead by day for Jan",font: {
 					size: 26, // Set the font size here
 					family: 'Arial', // Optional: you can also set other font properties
 					weight: 'bold', // Optional: e.g., 'normal', 'bold', etc.
