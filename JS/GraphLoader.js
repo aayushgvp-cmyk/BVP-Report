@@ -28,5 +28,7 @@ function handleChart() {
 	MDD.addEventListener("change",OnSwitch3)
 	SDD.addEventListener("change",OnSSwitch2)
 	LDD.addEventListener("change",OnLSwitch2)
+	WDD1.addEventListener("change",W1Switch)
+	SEDD1.addEventListener("change",SE1Switch)
 	console.log("chart end")
 }
