@@ -32,7 +32,6 @@ function SetMonth(){let M_0=document.getElementById('MDD').value-1;M_1=MArray[M_
 
 
 function FilterAndReload3(newdata){let NEWDATAOBJECT={};newdata.forEach(r=>{if(!(r[COL2.Day] in NEWDATAOBJECT)){NEWDATAOBJECT[r[COL2.Day]]=0};NEWDATAOBJECT[r[COL2.Day]]+=Number(r[COL2.CPL])})
-console.log(NEWDATAOBJECT)
 ReplaceData3(NEWDATAOBJECT);}
 
 

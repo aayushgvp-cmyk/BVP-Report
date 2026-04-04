@@ -11,7 +11,6 @@ async function handleFileAsync() {
 		rawData3=await ImportData('Labels')
 
 		rawData3.forEach(r=>LabelsHTMLString=LabelsHTMLString+`<strong style="text-align:center;position:relative;left:40%;width:60%;z-index:1;color:#4D15DE">${r[COL3['Label Name']]}: ${r[COL3["Label Value"]]}</strong><br>`)
-		console.log(LabelsHTMLString)
 		document.getElementById('LabelsDiv').innerHTML=LabelsHTMLString
 	}catch(err){console.log(err)}
 
@@ -23,7 +22,7 @@ async function handleFileAsync() {
 
 	rawData1.forEach(r=>{
 		if(!(r[COL1.Location] in C1Object)){C1Object[r[COL1.Location]]=0};
-		if(r[COL1.Type]=='Lead'){C1Object[r[COL1.Location]]+=1}else{log(r)}
+		if(r[COL1.Type]=='Lead'){C1Object[r[COL1.Location]]+=1}
 	})
 
 //                                                                                        C2

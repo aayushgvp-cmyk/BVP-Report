@@ -3,7 +3,7 @@ let Chart2
 let SOURCE,OWNER,LOCATION,SEMINAR2,FROM2
 
 function RunFilters2(r){
-	const OUTPUT=SeekLocation(LOCATION,r)&&SeekSource(SOURCE,r)&&SeekOwner(OWNER,r);
+	const OUTPUT=SeekLocation(LOCATION,r)&&SeekSource(SOURCE,r)&&SeekOwner(OWNER,r)&&SeekSE2(r)&&SeekW2(r);
 	return OUTPUT
 }
 
@@ -21,14 +21,59 @@ function UPDATE2(){Chart2.resize();Chart2.update()}
 function SeekLocation(L,R){if(L=="All"){return true}else if(R[COL1.Location]==L){return true}else{return false}}
 function SeekSource(S,R){if(S=="All"){return true}else if(R[COL1.source]==S){return true}else{return false}}
 function SeekOwner(O,R){if(O=="All"){return true}else if(R[COL1.assigned]==O){return true}else{return false}}
+function SeekSE2(R){if(SEMINAR2=="All"){return true}else if(R[COL1.Seminar]==SEMINAR2){return true}else{return false}}
+function SeekW2(R){
+	const D=R[COL1.Date], d=daysFrom(D);
+	if(FROM2=="All"){return true}
+	else {
+		switch(FROM2){
+			case 1:
+				if(d===0){return true}
+				else{return false}
+				break;
+			case 2:
+				if(d===1){return true}
+				else{return false}
+				break;
+			case 3:
+				if(lastMonday<=D&&D<nextMonday){return true}
+				else{return false}
+				break;
+			case 4:
+				const D4=subtractWeek(lastMonday)
+				if(D4<=D&&D<lastMonday){return true}
+				else{return false}
+				break;
+			case 5:
+				if(0<=d&&d<7){return true}
+				else{return false}
+				break;
+			case 6:
+				if(0<=d&&d<30){return true}
+				else{return false}
+				break;
+			case 7:
+				const D2=addMonth(100*Math.floor(DATE_TODAY_IN_yyyymmdd/100)+1)
+				const D3=subtractMonth(D2)
+				if(D2>D&&D>=D3){return true}
+				else{return false} 
+				break;
+			case 8:
+				const D0=100*Math.floor(DATE_TODAY_IN_yyyymmdd/100)+1
+				const D1=subtractMonth(D0)
+				if(D0>D&&D>=D1){return true}
+				else{return false} 
+				break;
+		}
+	}
+}
 
 function SetVariables2(){
 	SOURCE=(Number(Or(document.getElementById('SDD').value,0))===0?"All":SourceArray[Or(document.getElementById('SDD').value,0)-1]);
 	OWNER=(Number(Or(document.getElementById('ODD').value,0))===0?"All":OwnerArray[Or(document.getElementById('ODD').value,0)-1]);
 	LOCATION=(Number(Or(document.getElementById('LDD').value,0))===0?"All":LocationArray[Number(document.getElementById('LDD').value)-1]);
-	SEMINAR2=(Number(Or(document.getElementById('SEDD1').value,0))===0?"All":SeminarArray[Or(document.getElementById('SEDD1').value,0)-1]);
-	FROM2=(Number(Or(document.getElementById('WDD2').value,0))===0?"All":Or(document.getElementById('WDD2').value,0));
-
+	SEMINAR2=(Number(Or(document.getElementById('SEDD2').value,0))===0?"All":SeminarArray[Or(document.getElementById('SEDD2').value,0)-1]);
+	FROM2=(Number(Or(document.getElementById('WDD2').value,0))===0?"All":+Or(document.getElementById('WDD2').value,0));
 
 }
 
@@ -95,10 +140,20 @@ function OnLSwitch2(){
 	UPDATE2();
 }
 
+//								SEMINAR/FROM
+function OnChange2(){
+	SetVariables2()
+	if(CHOICE===1){
+		NEWDATA=rawData1.filter(r=>RunFilters2(r));
+		FilterAndReload2(NEWDATA,'source');
+	}
+	else{UpdateChart2();}
+	try{ReloadDetail();}catch(err){console.log(err)}
+	UPDATE2();
+}
 //								OWNER
 
 function OnOSwitch2(){
-	SetVariables2()
 	SetVariables2()
 	try{ReloadDetail();}catch(err){console.log(err)}
 }

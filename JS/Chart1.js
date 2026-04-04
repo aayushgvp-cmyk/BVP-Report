@@ -4,8 +4,7 @@ let SEMINAR1,FROM1
 
 function SeekSE1(R){if(SEMINAR1=="All"){return true}else if(R[COL1.Seminar]==SEMINAR1){return true}else{return false}}
 function SeekW1(R){
-	let D=R[COL1.Date]
-	const d=daysFrom(D)
+	const D=R[COL1.Date], d=daysFrom(D);
 	if(FROM1=="All"){return true}
 	else {
 		switch(FROM1){
@@ -18,11 +17,12 @@ function SeekW1(R){
 				else{return false}
 				break;
 			case 3:
-				if(D){return true}
+				if(lastMonday<=D&&D<nextMonday){return true}
 				else{return false}
 				break;
 			case 4:
-				if(D){return true}
+				const D4=subtractWeek(lastMonday)
+				if(D4<=D&&D<lastMonday){return true}
 				else{return false}
 				break;
 			case 5:
@@ -45,25 +45,22 @@ function SeekW1(R){
 				if(D0>D&&D>=D1){return true}
 				else{return false} 
 				break;
-
 		}
 	}
 }
 
-function OnChange(){
+function OnChange1(){
 SEMINAR1=(Number(Or(document.getElementById('SEDD1').value,0))===0?"All":SeminarArray[Or(document.getElementById('SEDD1').value,0)-1]);
 FROM1=(Number(Or(document.getElementById('WDD1').value,0))===0?"All":parseInt(document.getElementById('WDD1').value));
-const NEWDATA=rawData1.filter(r=>SeekSE1(r)&&SeekW1(r))
-console.log(NEWDATA)
+const NEW_DATA=rawData1.filter(r=>SeekSE1(r)&&SeekW1(r))
+let NEW_DATA_OBJECT={};
+NEW_DATA.forEach(r=>{if(!(r[COL1.Location] in NEW_DATA_OBJECT)){NEW_DATA_OBJECT[r[COL1.Location]]=0};NEW_DATA_OBJECT[r[COL1.Location]]+=1})
+Chart1.data.datasets[0].data=Object.values(NEW_DATA_OBJECT)
+Chart1.data.labels=Object.keys(NEW_DATA_OBJECT)
+Chart1.resize()
+Chart1.update()
 }
 
-function SE1Switch(){
-OnChange()
-}
-
-function W1Switch(){
-OnChange()
-}
 //								CHART
 
 function LoadC1(){

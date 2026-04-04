@@ -1,5 +1,12 @@
-const DATE_TODAY_IN_yyyymmdd=new Date().toISOString().split('T')[0].replace(/-/g,'')
+//								Predefined constants
 
+const DaysByMonth={1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
+
+//								Calculated constants
+const DATE_TODAY_IN_yyyymmdd=+(new Date().toISOString().split('T')[0].replace(/-/g,''))
+DAYS_SINCE_FIRST_MONDAY=daysFrom(30101)
+const lastMonday=(()=>{for(i=DATE_TODAY_IN_yyyymmdd;i>subtractWeek(DATE_TODAY_IN_yyyymmdd);i=subtractDay(i)){if(ModFunction(daysFrom(i)-DAYS_SINCE_FIRST_MONDAY,7)===0){return i}}})()
+const nextMonday=addWeek(lastMonday)
 
 function TakeMod(v){
 	return (v**2)**0.5;
@@ -18,7 +25,6 @@ function Or(a,b){if(a){return a}else{return b}}
 
 //								Date converters
 
-const DaysByMonth={1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
 function ymdTom(ymdDate){
 	return (ymdDate-(10000*Math.floor(ymdDate/10000))-ymdDate+(100*Math.floor(ymdDate/100)))/100
 }
@@ -61,9 +67,6 @@ function yymmddTodd(Date,StartYear=0){
 	return d0
 }
 
-//First Monday
-DAYS_SINCE_FIRST_MONDAY=daysFrom(30101)
-
 function DateTodayIndd(FromYear=2000){
 	const a=Date.now()
 	const b=Date.UTC(FromYear,1,1)
@@ -83,11 +86,3 @@ function subtractWeek(Date){const Day=ModFunction(Date,100);if(Day<=7){return (1
 function addWeek(Date){const Day=ModFunction(Date,100);const m=(ModFunction(Date,10000)-ModFunction(Date,100))/100;if(Day>DaysByMonth[m]-7){return (100*Math.floor(addMonth(Date)/100)+Day-DaysByMonth[m]+7);};return Date+7}
 function subtractDay(Date){const Day=ModFunction(Date,100);if(Day===1){return (100*Math.floor(subtractMonth(Date)/100)+DaysByMonth[(ModFunction(Date,10000)-ModFunction(Date,100))/100+1]);};return Date-1}
 function addDay(Date){const Day=ModFunction(Date,100);const m=(ModFunction(Date,10000)-ModFunction(Date,100))/100;if(Day===DaysByMonth[m]){return (100*Math.floor(addMonth(Date)/100)+1);};return Date+1}
-
-console.log(addDay(131),subtractDay(201))
-/*
-function lastMonday(){
-for(i=DATE_TODAY_IN_yyyymmdd){
-	if(ModFunction(daysFrom(i)-DAYS_SINCE_FIRST_MONDAY,7)===0){return i}
-}}
-*/
