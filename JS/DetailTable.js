@@ -3,7 +3,7 @@ let DTGrid;
 
 function MakeDT(){
   DTGrid=new gridjs.Grid({
-    columns:HEADERS1.filter(c=>c!='Type'&&c!='stage'&&c!='Date'&&c!='Seminar'),
+    columns:HEADERS1.filter(c=>c!='Type'&&c!='stage'),
     search: true,
     autoWidth:true,
     fixedHeader: true,
@@ -29,7 +29,7 @@ function ReloadDetail(){
   let i=0
   rawData1.forEach(r=>{
 
-    if(RunFilters2(r)){DTData[i]=[r[COL1["Contact Name"]],r[COL1.phone],r[COL1.email],r[COL1.source],r[COL1.assigned],r[COL1.Location]];i++}
+    if(RunFilters2(r)){DTData[i]=[r[COL1.Seminar],r[COL1.Date],r[COL1["Contact Name"]],r[COL1.phone],r[COL1.email],r[COL1.source],r[COL1.assigned],r[COL1.Location]];i++}
 
   })
 

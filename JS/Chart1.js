@@ -17,7 +17,7 @@ function SeekW1(R){
 				else{return false}
 				break;
 			case 3:
-				if(lastMonday<=D&&D<nextMonday){return true}
+				if(lastMonday<=D&&D<DATE_TODAY_IN_yyyymmdd){return true}
 				else{return false}
 				break;
 			case 4:
@@ -36,7 +36,7 @@ function SeekW1(R){
 			case 7:
 				const D2=addMonth(100*Math.floor(DATE_TODAY_IN_yyyymmdd/100)+1)
 				const D3=subtractMonth(D2)
-				if(D2>D&&D>=D3){return true}
+				if(DATE_TODAY_IN_yyyymmdd>D&&D>=DATE_TODAY_IN_yyyymmdd){return true}
 				else{return false} 
 				break;
 			case 8:
